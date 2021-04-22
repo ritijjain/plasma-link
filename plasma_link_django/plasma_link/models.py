@@ -33,4 +33,6 @@ class Donor(models.Model):
 
     phone = models.CharField(max_length=256)
 
+    hits = models.IntegerField(default=0)
+
 # regex=r'^\+?1?\d{9,15}$', error_message = ("Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed."
