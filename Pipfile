@@ -7,6 +7,10 @@ verify_ssl = true
 
 [packages]
 django = "*"
+django-mapbox-location-field = "*"
+social-auth-app-django = "*"
+django-bootstrap-datepicker-plus = "*"
+django-crispy-forms = "*"
 
 [requires]
 python_version = "3.8"
