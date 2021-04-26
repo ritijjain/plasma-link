@@ -171,4 +171,4 @@ STATIC_URL = '/static/'
 GOOGLE_RECAPTCHA_SITE_KEY =  os.environ["GOOGLE_RECAPTCHA_SITE_KEY"]
 GOOGLE_RECAPTCHA_SECRET_KEY = os.environ["GOOGLE_RECAPTCHA_SECRET_KEY"]
 
-django_heroku.settings(locals())
+# django_heroku.settings(locals())
