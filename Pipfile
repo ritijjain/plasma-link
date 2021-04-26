@@ -19,6 +19,7 @@ django-intl-tel-input = "*"
 django-g-recaptcha = "*"
 django-location-field = "==2.1.0"
 django-octicons = "*"
+django-heroku = "*"
 
 [requires]
 python_version = "3.8"
