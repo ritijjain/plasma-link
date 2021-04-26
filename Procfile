@@ -1,1 +1,0 @@
-web: gunicorn plasma_link_django.wsgi
