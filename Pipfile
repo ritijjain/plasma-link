@@ -11,6 +11,14 @@ django-mapbox-location-field = "*"
 social-auth-app-django = "*"
 django-bootstrap-datepicker-plus = "*"
 django-crispy-forms = "*"
+djongo = "*"
+pymongo = {extras = ["srv"], version = "*"}
+django-phonenumber-field = "*"
+babel = "*"
+django-intl-tel-input = "*"
+django-g-recaptcha = "*"
+django-location-field = "==2.1.0"
+django-octicons = "*"
 
 [requires]
 python_version = "3.8"

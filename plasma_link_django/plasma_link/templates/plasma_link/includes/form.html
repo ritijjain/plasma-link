@@ -1,0 +1,15 @@
+{% load crispy_forms_tags %}
+{% load mapbox_location_field_tags %}
+
+
+<form method="POST">
+    {% csrf_token %}
+    <fieldset class="form-group">
+        {{ form|crispy }}
+    </fieldset>
+    <div class="form-group">
+        <input type="hidden" name="next" value="{{ request.GET.next }}">
+        <button class="btn btn-info" type="submit">{{ labels.button_text }}</button>
+    </div>
+</form>
+{{ form.media }}

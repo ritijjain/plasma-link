@@ -3,17 +3,21 @@
 {% load static %}
 
 {% block content %}
-<h3>Login</h3>
+<h3>Register</h3>
 <hr>
 <form method="POST">
     {% csrf_token %}
     <fieldset class="form-group">
         {{ form|crispy }}
     </fieldset>
+
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <div class="g-recaptcha" data-sitekey="{{ GOOGLE_RECAPTCHA_SITE_KEY }}"></div>
+
     <div class="form-group">
-        <button class="btn btn-info" type="submit">Login</button>
+        <button class="btn btn-outline-info" type="submit">Register</button>
         <!-- <a href="{% url 'social:begin' 'facebook' %}" class="btn btn-primary">Login with Facebook</a> -->
     </div>
 </form>
-<p>Need An Account? <a class="ml-2" href="{% url 'register' %}">Register</a></p>
+<p>Already Have An Account? <a class="ml-2" href="{% url 'login' %}">Login</a></p>
 {% endblock content %}

@@ -1,0 +1,36 @@
+{% extends 'plasma_link/base.html' %}
+{% load mapbox_location_field_tags %} 
+{% location_field_includes %}
+{% include_jquery %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+
+<p><b>Name:</b> {{ donor.user.first_name }} {{ donor.user.last_name.0 }}.</p>
+<p><b>Blood Group:</b> {{ donor.blood_group }}</p>
+<p><b>Sex:</b> {{ donor.sex }}</p>
+<p><b>Age:</b> {{ donor.age }}</p>
+<p>Last recovered from COVID-19 on on {{ donor.covid_recovory_date|date:'M d, Y' }}.</p>
+
+<br>
+
+<p class="text-muted">To view this donor's phone number, please check "I'm not a robot" and click on "Verify".</p>
+
+<form method="POST">
+    {% csrf_token %}
+    <fieldset class="form-group">
+        {{ form|crispy }}
+    </fieldset>
+
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <div class="g-recaptcha" data-sitekey="{{ GOOGLE_RECAPTCHA_SITE_KEY }}"></div>
+
+    <div class="form-group">
+        <button class="btn btn-outline-info" type="submit">Verify</button>
+    </div>
+</form>
+
+{{ secret }}
+
+{% endblock content %}

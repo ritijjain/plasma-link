@@ -3,17 +3,20 @@
 {% load static %}
 
 {% block content %}
-<h3>Login</h3>
+<h3>Delete Account?</h3>
 <hr>
+
+<div class="alert alert-danger" role="alert">
+    Warning this action will permanently delete you account and and donor profile. Click on confirm to proceed.
+</div>
+
 <form method="POST">
     {% csrf_token %}
     <fieldset class="form-group">
         {{ form|crispy }}
     </fieldset>
     <div class="form-group">
-        <button class="btn btn-info" type="submit">Login</button>
-        <!-- <a href="{% url 'social:begin' 'facebook' %}" class="btn btn-primary">Login with Facebook</a> -->
+        <button class="btn btn-info" type="submit">Confirm</button>
     </div>
 </form>
-<p>Need An Account? <a class="ml-2" href="{% url 'register' %}">Register</a></p>
 {% endblock content %}

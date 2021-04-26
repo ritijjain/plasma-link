@@ -44,6 +44,11 @@ INSTALLED_APPS = [
     'social_django',
     'bootstrap_datepicker_plus',
     'crispy_forms',
+    'phonenumber_field',
+    'intl_tel_input',
+    'g_recaptcha',
+    'location_field.apps.DefaultConfig',
+    'octicons',
 ]
 
 MIDDLEWARE = [
@@ -86,11 +91,24 @@ WSGI_APPLICATION = 'plasma_link_django.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+     'default': {
+         'ENGINE': 'djongo',
+         'NAME': 'myFirstDatabase',
+         
+
+         'CLIENT': {
+                'host': os.environ["MONGODB_HOST"],
+                'username': os.environ["MONGODB_USERNAME"],
+                'password': os.environ["MONGODB_PASSWORD"],
+     }
+ }
+}
+'''
+     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
-}
+'''
 
 
 # Password validation
@@ -146,3 +164,11 @@ MAPBOX_KEY = os.environ["MAPBOX_KEY"]
 SOCIAL_AUTH_FACEBOOK_KEY = os.environ["SOCIAL_AUTH_FACEBOOK_KEY"]
 SOCIAL_AUTH_FACEBOOK_SECRET = os.environ["SOCIAL_AUTH_FACEBOOK_SECRET"]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = '/static/'
+
+PHONENUMBER_DEFAULT_REGION = 'IN'
+
+GOOGLE_RECAPTCHA_SITE_KEY =  os.environ["GOOGLE_RECAPTCHA_SITE_KEY"]
+GOOGLE_RECAPTCHA_SECRET_KEY = os.environ["GOOGLE_RECAPTCHA_SECRET_KEY"]

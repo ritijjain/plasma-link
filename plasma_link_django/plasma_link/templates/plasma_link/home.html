@@ -19,7 +19,6 @@
     <link rel="stylesheet" href="{% static 'plasma_link/css/main.css' %}">
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=#"></script>
@@ -60,8 +59,7 @@
                 <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account</a>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     {% if user.is_authenticated %}
-                    <a class="dropdown-item" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Logout</a>
-                    <a class="dropdown-item" href="{% url 'delete_account' %}"><i style="color: red;" class="fas fa-trash"></i> Delete Account</a>
+                    <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
                     {% else %}
                     <a class="dropdown-item" href="{% url 'login' %}">Login</a>
                     <a class="dropdown-item" href="{% url 'register' %}">Register</a>
@@ -80,19 +78,16 @@
         <div class="col-md-8">
           {% if messages %}
             {% for message in messages %}
-              <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+              <div class="alert alert-{{ message.tags }}">
                 {{ message }}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
               </div>
             {% endfor %}
           {% endif %}
-          {% block content %}{% endblock %}
+          <div style="display:flex;justify-content:center;align-items:center;">
+            <a class="btn btn-info btn-lg mr-2" href="{% url 'donor_registration' %}">Donor Registration</a>
+            <a class="btn btn-danger btn-lg mr-2" href="{% url 'find_donor' %}">Find a Donor</a>
+          </div>
         </div>
-        <div class="col-md-4">
-          {% block sidebar %}
-          {% endblock %}
         </div>
       </div>
     </main>
