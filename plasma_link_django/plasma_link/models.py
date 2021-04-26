@@ -2,7 +2,6 @@ from django.db import models
 from mapbox_location_field.models import LocationField
 from django.contrib.auth.models import User
 from django.db.models.expressions import RawSQL
-from phonenumber_field.modelfields import PhoneNumberField
 from math import cos, asin, sqrt, pi
 from location_field.models.plain import PlainLocationField
 
@@ -44,7 +43,7 @@ class Donor(models.Model):
     phone = models.CharField(max_length=256)
 
     views = models.IntegerField(default=0)
-    phone = PhoneNumberField()
+    phone = models.CharField(max_length=256)
 
     def process_lat_lon(self):
         self.latitude = self.location[0]

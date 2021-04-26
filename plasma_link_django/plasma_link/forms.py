@@ -6,7 +6,6 @@ from .models import Donor
 from django.forms.widgets import DateInput
 from bootstrap_datepicker_plus import DatePickerInput
 from mapbox_location_field.forms import LocationField
-from phonenumber_field.widgets import PhoneNumberPrefixWidget
 from intl_tel_input.widgets import IntlTelInputWidget
 
 

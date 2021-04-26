@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     'social_django',
     'bootstrap_datepicker_plus',
     'crispy_forms',
-    'phonenumber_field',
     'intl_tel_input',
     'g_recaptcha',
     'location_field.apps.DefaultConfig',
@@ -168,8 +167,6 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
-
-PHONENUMBER_DEFAULT_REGION = 'IN'
 
 GOOGLE_RECAPTCHA_SITE_KEY =  os.environ["GOOGLE_RECAPTCHA_SITE_KEY"]
 GOOGLE_RECAPTCHA_SECRET_KEY = os.environ["GOOGLE_RECAPTCHA_SECRET_KEY"]
