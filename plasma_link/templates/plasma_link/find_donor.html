@@ -17,34 +17,41 @@
 
 {% block content %}
 
-<div class="card-columns" style="column-count: 2">
-    {% for object in page_obj %}
-      <div class="card mb-4">
-        <div class="card-body">
-          <h5 class="card-title">{{ object.user.first_name }} {{ object.user.last_name.0 }}.</h5>
-          <p class="text-muted" >{{ object.blood_group }}{% if object.distance %} • {{ object.distance }} km away{% endif %}</p>
-          <a href="{% url 'donor_detail' object.pk %}" class="btn btn-primary">Contact</a>
+{% if page_obj %}
+
+  <div class="card-columns">
+      {% for object in page_obj %}
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5 class="card-title">{{ object.user.first_name }} {{ object.user.last_name.0 }}.</h5>
+            <p class="text-muted" >{{ object.blood_group }}{% if object.distance %} • {{ object.distance }} km away{% endif %}</p>
+            <a href="{% url 'donor_detail' object.pk %}" class="btn btn-primary">Contact</a>
+          </div>
         </div>
-      </div>
-    {% endfor %}
-</div>
+      {% endfor %}
+  </div>
 
-<div class="pagination">
-    <span class="step-links">
-        {% if page_obj.has_previous %}
-        <a href="?page=1">&laquo; first</a>
-        <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-        {% endif %}
+  <div class="pagination">
+      <span class="step-links">
+          {% if page_obj.has_previous %}
+          <a href="?page=1">&laquo; first</a>
+          <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+          {% endif %}
 
-        <span class="current">
-            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-        </span>
+          <span class="current">
+              Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+          </span>
 
-        {% if page_obj.has_next %}
-        <a href="?page={{ page_obj.next_page_number }}">next</a>
-        <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-        {% endif %}
-    </span>
-</div>
+          {% if page_obj.has_next %}
+          <a href="?page={{ page_obj.next_page_number }}">next</a>
+          <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+          {% endif %}
+      </span>
+  </div>
 
+{% else %}
+
+<p>No results. Could not find any donors within 111 km of your search location.</p>
+  
+{% endif %}
 {% endblock content %}

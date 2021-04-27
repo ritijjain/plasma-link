@@ -9,15 +9,30 @@
 <p>All donors must meet certain conditions.</p>
 <p><i style="color: green" class="far fa-check-circle"></i> Between 18 - 55 year old</p>
 <p><i style="color: green" class="far fa-check-circle"></i> Willing and excited to donate</p>
-<p><i style="color: red" class="far fa-times-circle"></i> Weight less than 50 kg</p>
-
+<p><i style="color: red" class="far fa-times-circle"></i> Must not weight less than 50 kg</p>
+<p><i style="color: red" class="far fa-times-circle"></i> Must not have conditions such as chronic kidney/heart/lung/liver disease, HIV/AIDS, or diabetes.</p>
+<p><i style="color: red" class="far fa-times-circle"></i> Must not have ever been pregnant before.</p>
+<p><i style="color: red" class="far fa-times-circle"></i> Must not have had a COVID vaccine in the last 14 days.</p>
+<p><i style="color: red" class="far fa-times-circle"></i> Must not have underwent surgery or had a tattoo in the past six months.</p>
 
 {% endblock sidebar %}
 
 
 
 {% block content %}
+<h3>Donor Registration</h3>
+<hr>
 
-{% include 'plasma_link/includes/form.html' %}
+{% if already_registered_donor %}
+
+    <p>You are already registered as a donor (<a href="{% url 'donor_detail' already_registered_donor.id %}">view your profile</a> <i class="fas fa-external-link-alt"></i>) under this account.</p>
+
+    <p>To create a new donor profile, you must <a href="{% url 'delete_account' %}">delete you account</a> <i class="fas fa-external-link-alt"></i>.</p>
+
+{% else %}
+
+    {% include 'plasma_link/includes/form.html' %}
+
+{% endif %}
 
 {% endblock content %}

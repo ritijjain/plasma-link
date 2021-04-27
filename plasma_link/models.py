@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.db.models.expressions import RawSQL
 from math import cos, asin, sqrt, pi
 from location_field.models.plain import PlainLocationField
+import secrets
 
 
 sex_choices = [
@@ -28,19 +29,21 @@ from django.db.backends.signals import connection_created
 from django.dispatch import receiver
 
 class Donor(models.Model):
+    id = models.CharField(max_length=256, primary_key=True, default=secrets.token_urlsafe)
+
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
     sex = models.CharField(max_length=256, choices=sex_choices)
 
-    age = models.IntegerField()
+    age = models.IntegerField(help_text='Donors must be between 18 - 55 year old.')
     blood_group = models.CharField(max_length=256, choices=blood_group_choices)
 
-    covid_recovory_date = models.DateTimeField()
+    covid_recovory_date = models.DateTimeField(help_text='The approximate date when all your COVID symptoms subsided or you tested negative for COVID.')
     
-    location = LocationField()
+    location = LocationField(help_text='Enter the approximate location of your locality. This location is only used for location based search to help locate the closest donors.')
     latitude = models.FloatField(null=True)
     longitude = models.FloatField(null=True)
 
-    phone = models.CharField(max_length=256)
+    phone = models.CharField(max_length=256, verbose_name='Phone/Mobile')
 
     views = models.IntegerField(default=0)
     phone = models.CharField(max_length=256)

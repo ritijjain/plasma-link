@@ -54,8 +54,8 @@
             </div>
             <!-- Navbar Right Side -->
             <div class="navbar-nav">
-              <a class="btn btn-info mr-2" href="{% url 'donor_registration' %}">Donor Registration</a>
-              <a class="btn btn-danger mr-2" href="{% url 'find_donor' %}">Find a Donor</a>
+              <a class="btn btn-info mr-2" href="{% url 'donor_registration' %}"><i class="fas fa-tint"></i> Donor Registration</a>
+              <a class="btn btn-danger mr-2" href="{% url 'find_donor' %}"><i class="fas fa-search"></i> Find a Donor</a>
               <div class="dropdown show">
                 <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account</a>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -63,8 +63,8 @@
                     <a class="dropdown-item" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Logout</a>
                     <a class="dropdown-item" href="{% url 'delete_account' %}"><i style="color: red;" class="fas fa-trash"></i> Delete Account</a>
                     {% else %}
-                    <a class="dropdown-item" href="{% url 'login' %}">Login</a>
-                    <a class="dropdown-item" href="{% url 'register' %}">Register</a>
+                    <a class="dropdown-item" href="{% url 'login' %}"><i class="fas fa-sign-in-alt"></i> Login</a>
+                    <a class="dropdown-item" href="{% url 'register' %}"><i class="fas fa-user-plus"></i> Register</a>
                     {% endif %}
                   </div>
               </div>

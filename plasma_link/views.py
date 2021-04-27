@@ -18,7 +18,7 @@ class Home(TemplateView):
 class RegisterDonor(LoginRequiredMixin, CreateView):
     template_name = 'plasma_link/register_donor.html'
     form_class = RegisterDonorForm
-    success_url = ''
+    success_url = reverse_lazy('find_donor')
 
     def form_valid(self, form):
         self.donor = form.save()
@@ -29,6 +29,9 @@ class RegisterDonor(LoginRequiredMixin, CreateView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+
+        if Donor.objects.filter(user=self.request.user).exists():
+            context['already_registered_donor'] = Donor.objects.filter(user=self.request.user)[0]
         context['labels'] = {'button_text': 'Register as a Donor'}
         return context
     
@@ -43,7 +46,7 @@ def FindDonor(request):
     if request.method == 'POST':
         form = FindDonorForm(request.POST)
         if form.is_valid():
-            location = form.cleaned_data['location'].split(',')
+            location = form.cleaned_data['search_location'].split(',')
 
             dataset = dataset.filter(latitude__gt=float(
                 location[0])-1, latitude__lt=float(location[0])+1,

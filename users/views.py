@@ -20,7 +20,7 @@ def register(request):
                 user = form.save()
                 login(request, user, backend='django.contrib.auth.backends.ModelBackend')
                 messages.success(request, f'Account created for {user.username}. Make sure you remember your username and password!')
-                return redirect('find_donor')  
+                return redirect('donor_registration')  
     else:
         form = UserRegisterForm() 
     context = {'form': form}
@@ -38,7 +38,7 @@ def delete_account(request):
         if form.is_valid():
             user.delete()
             messages.success(request, f'Account deleted for {user.username}.')
-            return redirect('/')  
+            return reverse_lazy('find_donor') 
     else:
         form = DeleteAccountForm() 
     context['form'] = form

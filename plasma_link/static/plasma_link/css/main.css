@@ -87,3 +87,38 @@ body {
     font-size:   10pt;
     line-height: 10pt;  /* try also a bit smaller line-height */
   }
+
+  @media (max-width: 600px) {
+    p, ul, ol, dl {
+      font-size: 100%;
+      line-height: 1.6; }
+
+    .wrapper {
+      width: 90%;
+      margin: 15px auto; }
+
+    .navigation,
+    .social-links {
+      display: block;
+      text-align: right;
+      width: 100%; }
+
+    .social-links {
+      font-size: 200%;
+      margin: 10px auto; }
+
+    .page-title {
+      margin-top: 10px;
+      margin-bottom: 30px; }
+  }
+
+  .card-columns {
+    @media (max-width: 600px) {
+      column-count: 1;
+    }
+  
+    @media (max-width: 3000px) {
+      column-count: 2;
+    }
+  }
+
