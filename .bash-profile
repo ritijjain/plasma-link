@@ -1,0 +1,5 @@
+export MONGODB_HOST="mongodb+srv://django:Y4xqHA9BmvZnjryk@cluster0.0xy1r.mongodb.net/myFirstDatabase"
+export MONGODB_USERNAME="django"
+export MONGODB_PASSWORD="Y4xqHA9BmvZnjryk"
+export GOOGLE_RECAPTCHA_SECRET_KEY="6LdRgrkaAAAAAG52nlegd5tRHB5Yq4SLGCH2PjWP"
+export GOOGLE_RECAPTCHA_SITE_KEY="6LdRgrkaAAAAAD_F_Teu5KK2ym7QTbFH2FSCl5jM"
