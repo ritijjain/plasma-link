@@ -12,8 +12,8 @@ from g_recaptcha.validate_recaptcha import validate_captcha
 from django.conf import settings
 from django.db.models import IntegerField, Value
 
-class Home(TemplateView):
-    template_name = 'plasma_link/home.html'
+class AboutVew(TemplateView):
+    template_name = 'plasma_link/about.html'
 
 class RegisterDonor(LoginRequiredMixin, CreateView):
     template_name = 'plasma_link/register_donor.html'
