@@ -39,7 +39,10 @@ class Donor(models.Model):
 
     covid_recovory_date = models.DateTimeField(help_text='The approximate date when all your COVID symptoms subsided or you tested negative for COVID.')
     
-    location = LocationField(help_text='Enter the approximate location of your locality. This location is only used for location based search to help locate the closest donors.')
+    location = LocationField(
+        help_text='Enter the approximate location of your locality. This location is only used for location based search to help locate the closest donors.',
+        map_attrs={'track_location_button': True, 'center': [76.9512635, 28.6923329], 'readonly': True, 'zoom': 4})
+
     latitude = models.FloatField(null=True)
     longitude = models.FloatField(null=True)
 

@@ -15,6 +15,11 @@ from django.db.models import IntegerField, Value
 class AboutView(TemplateView):
     template_name = 'plasma_link/about.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'About'
+        return context
+
 class RegisterDonor(LoginRequiredMixin, CreateView):
     login_url = reverse_lazy('register')
 
@@ -35,6 +40,7 @@ class RegisterDonor(LoginRequiredMixin, CreateView):
         if Donor.objects.filter(user=self.request.user).exists():
             context['already_registered_donor'] = Donor.objects.filter(user=self.request.user)[0]
         context['labels'] = {'button_text': 'Register as a Donor'}
+        context['title'] = 'Donor Registration'
         return context
     
     def get_success_url(self):
@@ -71,7 +77,8 @@ def FindDonor(request):
     page_obj = paginator.get_page(request.GET.get('page'))
     context['page_obj'] = page_obj
 
-    context['labels']= {'button_text': 'Refresh'}
+    context['labels']= {'button_text': 'Search'}
+    context['title'] = 'Find Donor'
     return render(request, 'plasma_link/find_donor.html', context)
 
 @validate_captcha
@@ -91,4 +98,5 @@ def donor_detail(request, pk):
 
     context['donor'] = donor
     context['GOOGLE_RECAPTCHA_SITE_KEY'] = settings.GOOGLE_RECAPTCHA_SITE_KEY
+    context['title'] = 'Donor Detail'
     return render(request, 'plasma_link/donor_detail.html', context)

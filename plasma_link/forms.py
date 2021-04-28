@@ -81,7 +81,7 @@ blood_group_choices = [
 ]
 
 class FindDonorForm(Form):
-    search_location = LocationField()
+    search_location = LocationField(map_attrs={'track_location_button': True, 'center': [76.9512635, 28.6923329], 'readonly': True, 'zoom': 4})
     blood_group = ChoiceField(choices=blood_group_choices, required=False)
 
 class Verify(Form):
