@@ -27,10 +27,6 @@ SECRET_KEY = os.environ["SECRET_KEY"]
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-if not DEBUG:
-    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-    SECURE_SSL_REDIRECT = True
-
 ALLOWED_HOSTS = ['plasmalink.herokuapp.com']
 
 
@@ -176,3 +172,9 @@ GOOGLE_RECAPTCHA_SITE_KEY =  os.environ["GOOGLE_RECAPTCHA_SITE_KEY"]
 GOOGLE_RECAPTCHA_SECRET_KEY = os.environ["GOOGLE_RECAPTCHA_SECRET_KEY"]
 
 django_heroku.settings(locals(), databases=False)
+
+if not DEBUG:
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    SECURE_SSL_REDIRECT = True
+
+DEBUG_PROPAGATE_EXCEPTIONS = True
