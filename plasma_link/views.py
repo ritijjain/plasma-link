@@ -16,6 +16,8 @@ class AboutView(TemplateView):
     template_name = 'plasma_link/about.html'
 
 class RegisterDonor(LoginRequiredMixin, CreateView):
+    login_url = reverse_lazy('register')
+
     template_name = 'plasma_link/register_donor.html'
     form_class = RegisterDonorForm
     success_url = reverse_lazy('find_donor')
