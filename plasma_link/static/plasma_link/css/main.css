@@ -88,6 +88,9 @@ body {
     line-height: 10pt;  /* try also a bit smaller line-height */
   }
 
+  .card-columns {
+    column-count: 2; }
+
   @media (max-width: 600px) {
     p, ul, ol, dl {
       font-size: 100%;
@@ -110,15 +113,7 @@ body {
     .page-title {
       margin-top: 10px;
       margin-bottom: 30px; }
+    
+    .card-columns {
+      column-count: 1; }
   }
-
-  .card-columns {
-    @media (max-width: 600px) {
-      column-count: 1;
-    }
-  
-    @media (max-width: 3000px) {
-      column-count: 2;
-    }
-  }
-

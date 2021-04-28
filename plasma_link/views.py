@@ -12,7 +12,7 @@ from g_recaptcha.validate_recaptcha import validate_captcha
 from django.conf import settings
 from django.db.models import IntegerField, Value
 
-class AboutVew(TemplateView):
+class AboutView(TemplateView):
     template_name = 'plasma_link/about.html'
 
 class RegisterDonor(LoginRequiredMixin, CreateView):
