@@ -38,7 +38,7 @@ def delete_account(request):
         if form.is_valid():
             user.delete()
             messages.success(request, f'Account deleted for {user.username}.')
-            return reverse_lazy('find_donor') 
+            return redirect('find_donor') 
     else:
         form = DeleteAccountForm() 
     context['form'] = form
